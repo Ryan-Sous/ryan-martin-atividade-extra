@@ -25,5 +25,10 @@ public class Bicicleta {
             marcha = 0;
         }
     }
-}
 
+    public void imprimirEstados() {
+        System.out.println("Velocidade: " + velocidade + " km/h");
+        System.out.println("Marcha: " + marcha);
+        System.out.println("----------------");
+    }
+}
