@@ -4,10 +4,9 @@ public class Bicicleta {
     int marcha;
     int velocidadeMaxima;
 
-    // Construtor com inicialização completa
     public Bicicleta(int cadencia, int velocidade, int marcha, int velocidadeMaxima) {
         this.cadencia = cadencia;
-        this.velocidade = velocidade;
+        this.velocidade = Math.min(velocidade, velocidadeMaxima);
         this.marcha = marcha;
         this.velocidadeMaxima = velocidadeMaxima;
     }
@@ -21,7 +20,11 @@ public class Bicicleta {
     }
 
     public void aumentarVelocidade(int incremento) {
-        velocidade += incremento;
+        if (velocidade + incremento <= velocidadeMaxima) {
+            velocidade += incremento;
+        } else {
+            velocidade = velocidadeMaxima;
+        }
     }
 
     public void frear(int decremento) {
@@ -34,6 +37,7 @@ public class Bicicleta {
     public void imprimirEstados() {
         System.out.println("Cadência: " + cadencia +
                            " | Velocidade: " + velocidade +
-                           " | Marcha: " + marcha);
+                           " | Marcha: " + marcha +
+                           " | Velocidade Máxima: " + velocidadeMaxima);
     }
 }
